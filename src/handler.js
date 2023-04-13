@@ -3,7 +3,7 @@ const books = require('./books');
 
 const addBookHandler = (request, h) => {
     const{
-            name
+            name,
             year,  
             author,
             summary,
@@ -41,10 +41,10 @@ const addBookHandler = (request, h) => {
     };
 
     books.push(newBook);
+
     const isSuccess = books.filter((book) => book.id === id).length > 0;
-    
-    const (isSuccess) {
-        const response = h.response ({
+    if(isSuccess) {
+        const response = h.response({
             status: 'success',
             message: 'Buku berhasil ditambahkan',
             data: {
@@ -52,7 +52,7 @@ const addBookHandler = (request, h) => {
             },
         });
         response.code(201);
-        return response;    
+        return response;
     }
 
     const response = h.response ({
